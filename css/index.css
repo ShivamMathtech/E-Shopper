@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#header {
+  height: 150px;
+}
+.upper-header,
+.lower-header {
+  height: 75px;
+}
+.box-icons {
+  height: 30px;
+  width: 60px;
+  border: 1.5px solid #edf1ff;
+}
+#E {
+  display: block;
+  height: 40px;
+  width: 40px;
+  border: 1.5px solid #edf1ff;
+  color: #d19c97;
+}
+#like,
+#cart {
+  font-size: 13px;
+  font-weight: bold;
+}
+.bi {
+  color: #d19c97;
+  font-weight: bold;
+}
