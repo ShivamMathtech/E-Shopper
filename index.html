@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./js/index.js" />
     <script>
       function categoriesData() {
-        fetch(" https://api.escuelajs.co/api/v1/categories")
+        fetch("https://api.escuelajs.co/api/v1/categories")
           .then(function (response) {
             return response.json();
           })
@@ -36,9 +36,65 @@
             }
           });
       }
+      function bodyload() {
+        categoriesData();
+        showProduct();
+      }
+      var count = 0;
+      function showProduct() {
+        fetch("https://api.escuelajs.co/api/v1/products")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            for (var item of data) {
+              var row = document.createElement("div");
+              row.className = "row m-0 mt-2";
+              row.innerHTML = `
+                     <div class="col-md-4">
+                <div class="card rounded-0">
+                  <div class="card-img-top">
+                    <img src =${item.images[1]} class='card-img-top rounded-0'></div>
+                    <div class='card-body'>
+                      <h6 class='card-title'>${item.title}</h6>
+                      <p class='text-muted'>Price${item.price}</p>
+                      </div>
+                </div>
+
+              </div>
+              <div class="col-md-4">
+                <div class="card rounded-0">
+                  <div class="card-img-top">
+                    <img src =${item.images[2]} class='card-img-top rounded-0'>
+                    </div>
+                    <div class='card-body'>
+                      <h6 class='card-title'>${item.title}</h6>
+                      <p class='text-muted'>Price${item.price}</p>
+                      </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card rounded-0">
+                  <div class="card-img-top">
+                    <img src =${item.images[3]} class='card-img-top rounded-0'></div>
+                    <div class='card-body'>
+                      <h6 class='card-title'>${item.title}</h6>
+                      <p class='text-muted'>Price${item.price}</p>
+                      </div>
+                </div>
+              </div>
+                    `;
+              document.getElementById("product-container").appendChild(row);
+              count++;
+              if (count == 3) {
+                break;
+              }
+            }
+          });
+      }
     </script>
   </head>
-  <body onload="categoriesData()">
+  <body onload="bodyload()">
     <header class="header p-0" id="header">
       <div class="upper-header p-0">
         <div class="container p-0 h-100">
@@ -170,7 +226,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./img/b3.jpg" class="d-block w-100" alt="..." />
+            <img src="./img/b4.jpg" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>
@@ -199,7 +255,27 @@
         </button>
       </div>
     </div>
+    <div class="container shopping-banner mt-2">
+      <div class="row m-0 h-100">
+        <div class="col box d-flex justify-content-center align-items-center">
+          <b>Product Quality</b>
+        </div>
+        <div class="col box d-flex justify-content-center align-items-center">
+          <b>Free Shipping</b>
+        </div>
+        <div class="col box d-flex justify-content-center align-items-center">
+          <b>14 Day Return</b>
+        </div>
+        <div class="col box d-flex justify-content-center align-items-center">
+          <b>24/7 Support</b>
+        </div>
+      </div>
+    </div>
+    <div class="product-container container mt-4 p-0" id="product-container">
+      <!-- <div class="row m-0"> -->
 
+      <!-- </div> -->
+    </div>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
