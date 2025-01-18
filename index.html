@@ -39,6 +39,7 @@
       function bodyload() {
         categoriesData();
         showProduct();
+        trandyProducts();
       }
       var count = 0;
       function showProduct() {
@@ -92,9 +93,144 @@
             }
           });
       }
+      function trandyProducts() {
+        let count2 = 0;
+        fetch("https://api.escuelajs.co/api/v1/categories")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            for (var item of data) {
+              var row = document.createElement("div");
+              row.className = "row m-0 mt-3";
+              row.innerHTML = `
+        <div class="col-md-3">
+          <div class="card rounded-0">
+            <img src="${item.image}" alt="" class="card-img-top rounded-0" />
+            <div class="card-body text-center p-0">
+              <p>${item.name}</p>
+              <p>
+                <span>$120.00</span> &nbsp;&nbsp;<span
+                  ><strike>$140.00</strike></span
+                >
+              </p>
+            </div>
+            <div class="card-footer">
+              <p class="d-flex justify-content-center align-items-center">
+                <span class="bi bi-heart"></span
+                ><small>View Detail</small> &nbsp;&nbsp;
+                <span class="bi bi-cart"></span><small>Add To cart</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card rounded-0">
+            <img src="${item.image}" alt="" class="card-img-top rounded-0" />
+            <div class="card-body text-center p-0">
+              <p>${item.name}</p>
+              <p>
+                <span>$120.00</span> &nbsp;&nbsp;<span
+                  ><strike>$140.00</strike></span
+                >
+              </p>
+            </div>
+            <div class="card-footer">
+              <p class="d-flex justify-content-center align-items-center">
+                <span class="bi bi-heart"></span
+                ><small>View Detail</small> &nbsp;&nbsp;
+                <span class="bi bi-cart"></span><small>Add To cart</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card rounded-0">
+            <img src="${item.image}" alt="" class="card-img-top rounded-0" />
+            <div class="card-body text-center p-0">
+              <p>${item.name}</p>
+              <p>
+                <span>$120.00</span> &nbsp;&nbsp;<span
+                  ><strike>$140.00</strike></span
+                >
+              </p>
+            </div>
+            <div class="card-footer">
+              <p class="d-flex justify-content-center align-items-center">
+                <span class="bi bi-heart"></span
+                ><small>View Detail</small> &nbsp;&nbsp;
+                <span class="bi bi-cart"></span><small>Add To cart</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card rounded-0">
+            <img src="${item.image}" alt="" class="card-img-top rounded-0" />
+            <div class="card-body text-center p-0">
+              <p>${item.name}</p>
+              <p>
+                <span>$120.00</span> &nbsp;&nbsp;<span
+                  ><strike>$140.00</strike></span
+                >
+              </p>
+            </div>
+            <div class="card-footer">
+              <p class="d-flex justify-content-center align-items-center">
+                <span class="bi bi-heart"></span
+                ><small>View Detail</small> &nbsp;&nbsp;
+                <span class="bi bi-cart"></span><small>Add To cart</small>
+              </p>
+            </div>
+          </div>
+        </div>
+        `;
+
+              document.getElementById("trandy").appendChild(row);
+              count2++;
+              if (count2 == 4) {
+                break;
+              }
+            }
+          });
+      }
+      function loginForm() {
+        document.getElementById("modal-body").innerHTML = "";
+        var form = document.createElement("form");
+        document.getElementById("title").innerHTML = "Login";
+        form.innerHTML = `
+        <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary w-100" data-bs-dismiss="modal">Login</button> 
+        `;
+        document.getElementById("modal-body").appendChild(form);
+      }
     </script>
   </head>
+
   <body onload="bodyload()">
+    <div class="modal fade rounded-0" id="modal">
+      <div class="modal-dialog modal-dialog-centered rounded-0">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 id="title" class="modal-title">Login</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body p-4" id="modal-body"></div>
+        </div>
+      </div>
+    </div>
     <header class="header p-0" id="header">
       <div class="upper-header p-0">
         <div class="container p-0 h-100">
@@ -168,9 +304,24 @@
               class="col-md-3 d-flex justify-content-center align-items-center"
             >
               <ul class="nav">
-                <li class="nav-item"><a href="" class="nav-link">Login</a></li>
                 <li class="nav-item">
-                  <a href="" class="nav-link">Register</a>
+                  <a
+                    href=""
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal"
+                    onclick="loginForm()"
+                    >Login</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    href=""
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modal"
+                    >Register</a
+                  >
                 </li>
               </ul>
             </div>
@@ -288,6 +439,14 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="container mt-4 p-0 Trandy">
+      <div class="row m-0">
+        <div class="col text-center">
+          <h4><b>Trandy Products</b></h4>
+        </div>
+      </div>
+      <div class="container p-0" id="trandy"></div>
     </div>
 
     <script
