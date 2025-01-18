@@ -19,27 +19,41 @@
     />
 
     <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./js/index.js" />
+    <script>
+      function categoriesData() {
+        fetch(" https://api.escuelajs.co/api/v1/categories")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            for (var item of data) {
+              var option = document.createElement("option");
+              option.text = item.name;
+              option.value = item.name;
+              option.className = "rounded-0";
+              document.getElementById("select").appendChild(option);
+            }
+          });
+      }
+    </script>
   </head>
-  <body>
+  <body onload="categoriesData()">
     <header class="header p-0" id="header">
-      <div class="upper-header">
+      <div class="upper-header p-0">
         <div class="container p-0 h-100">
           <div class="row m-0 h-100">
-            <div
-              class="col-md-3 p-0 d-flex justify-content-center align-items-center"
-            >
+            <div class="col-md-3 p-0 d-flex align-items-center">
               <h3
                 id="E"
-                class="d-flex justify-content-center align-items-center"
+                class="d-flex justify-content-center align-items-center p-0"
               >
                 <b>E </b>
               </h3>
-              <h3>&nbsp;Shopper</h3>
+              <h3><b>&nbsp;Shopper</b></h3>
             </div>
-            <div
-              class="col-md-6 p-0 d-flex justify-content-center align-items-center"
-            >
-              <div class="input-group">
+            <div class="col-md-6 p-0 d-flex align-items-center">
+              <div class="input-group p-0">
                 <input
                   type="text"
                   class="form-control rounded-0"
@@ -69,8 +83,123 @@
           </div>
         </div>
       </div>
-      <div class="lower-header bg-danger"></div>
+      <div class="lower-header p-0">
+        <div class="container h-100 p-0">
+          <div class="row m-0 h-100">
+            <div
+              class="col-md-3 d-flex justify-content-center align-items-center"
+            >
+              <select
+                name="select"
+                id="select"
+                class="form-select rounded-0"
+              ></select>
+            </div>
+            <div class="col-md-6 d-flex align-items-center p-0">
+              <ul class="nav">
+                <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="" class="nav-link">Shop</a></li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">Shop Details</a>
+                </li>
+                <li class="nav-item"><a href="" class="nav-link">Pages</a></li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="col-md-3 d-flex justify-content-center align-items-center"
+            >
+              <ul class="nav">
+                <li class="nav-item"><a href="" class="nav-link">Login</a></li>
+                <li class="nav-item">
+                  <a href="" class="nav-link">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
+    <div class="container">
+      <div
+        id="carouselExampleCaptions"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./img/b1.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>
+                Some representative placeholder content for the first slide.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./img/b2.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>
+                Some representative placeholder content for the second slide.
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./img/b3.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>
+                Some representative placeholder content for the third slide.
+              </p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="

@@ -30,3 +30,9 @@
   color: #d19c97;
   font-weight: bold;
 }
+.lower-header {
+  border-top: 1px solid #edf1ff;
+}
+.nav-link {
+  color: #000;
+}
